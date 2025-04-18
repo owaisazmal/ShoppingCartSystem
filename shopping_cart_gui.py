@@ -23,7 +23,7 @@ class ShoppingCartGUI:
             connection = mysql.connector.connect(
                 host='localhost',
                 user='root',
-                password='Test@123',  
+                password='',  
                 database='shopping_cart_system'
             )
             return connection

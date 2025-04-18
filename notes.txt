@@ -1,0 +1,10 @@
+{To satrt mysql}
+brew services start mysql
+
+{to connect to MySql}
+mysql -u root -p
+
+
+brew services restart mysql
+mysqladmin -u root -p shutdown
+mysqladmin ping
