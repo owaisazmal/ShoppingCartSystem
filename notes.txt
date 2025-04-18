@@ -1,3 +1,5 @@
+*Ignore: Self Notes to Work with SQL
+
 {To satrt mysql}
 brew services start mysql
 
@@ -8,3 +10,35 @@ mysql -u root -p
 brew services restart mysql
 mysqladmin -u root -p shutdown
 mysqladmin ping
+
+
+{Adding things manually:}
+
+INIT:
+
+CREATE DATABASE shopping_cart_system;
+USE shopping_cart_system;
+
+CREATE TABLE products (
+    product_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    price DECIMAL(10, 2) NOT NULL,
+    description TEXT,
+    category VARCHAR(50)
+);
+
+CREATE TABLE inventory (
+    product_id INT PRIMARY KEY,
+    quantity INT NOT NULL DEFAULT 0,
+    FOREIGN KEY (product_id) REFERENCES products(product_id)
+);
+
+INSERT INTO products (name, price, description, category) VALUES
+('Laptop', 999.99, 'High performance laptop', 'Electronics'),
+('Mouse', 19.99, 'Wireless mouse', 'Electronics'),
+('Notebook', 4.99, '200-page notebook', 'Stationery');
+
+INSERT INTO inventory (product_id, quantity) VALUES
+(1, 10),
+(2, 50),
+(3, 100);

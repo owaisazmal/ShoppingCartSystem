@@ -17,10 +17,11 @@ class ShoppingCartGUI:
         
         # Load products from database
         self.load_products()
-        
+
+    #Establishing the connection ref:https://dev.mysql.com/doc/connector-python/en/connector-python-example-connecting.html  
     def connect_to_db(self):
         try:
-            connection = mysql.connector.connect(
+            connection = mysql.connector.connect( 
                 host='localhost',
                 user='root',
                 password='',  

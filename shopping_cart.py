@@ -1,10 +1,12 @@
 import mysql.connector
 from mysql.connector import Error
 
+
+#Establishing the connection ref:https://dev.mysql.com/doc/connector-python/en/connector-python-example-connecting.html
 class DatabaseConnection:
     def __init__(self):
         try:
-            self.connection = mysql.connector.connect(
+            self.connection = mysql.connector.connect( 
                 host='localhost',
                 user='root',  
                 password='Test@123',  
@@ -20,15 +22,20 @@ class DatabaseConnection:
             self.connection.close()
             print("Database connection closed")
 
+#End of the DatabaseConnection class
+
+#This class handles the shoping cart operations
 class ShoppingCartSystem:
     def __init__(self):
         self.db = DatabaseConnection()
         self.cart = {}
-    
+
+    #This method fetches product detils from the database
+    #It takes the product_id as argment & returns the product details
     def get_product(self, product_id):
         """Get product details from database"""
         try:
-            cursor = self.db.connection.cursor(dictionary=True)
+            cursor = self.db.connection.cursor(dictionary=True) #set dictionary=True to get results as dictionaries
             query = "SELECT * FROM products WHERE product_id = %s"
             cursor.execute(query, (product_id,))
             product = cursor.fetchone()
