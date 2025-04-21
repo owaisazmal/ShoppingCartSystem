@@ -36,7 +36,7 @@ CREATE TABLE `inventory` (
 
 LOCK TABLES `inventory` WRITE;
 /*!40000 ALTER TABLE `inventory` DISABLE KEYS */;
-INSERT INTO `inventory` VALUES (1,10),(2,90),(3,100),(4,30);
+INSERT INTO `inventory` VALUES (1,10),(2,90),(3,100),(5,30),(6,20);
 /*!40000 ALTER TABLE `inventory` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -54,7 +54,7 @@ CREATE TABLE `products` (
   `description` text,
   `category` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`product_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -63,7 +63,7 @@ CREATE TABLE `products` (
 
 LOCK TABLES `products` WRITE;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
-INSERT INTO `products` VALUES (1,'Laptop',999.99,'High performance laptop','Electronics'),(2,'Mouse',19.99,'Wireless mouse','Electronics'),(3,'Notebook',4.99,'200-page notebook','Stationery'),(4,'Test',99.50,'test','test');
+INSERT INTO `products` VALUES (1,'Laptop',999.99,'High performance laptop','Electronics'),(2,'Mouse',19.99,'Wireless mouse','Electronics'),(3,'Notebook',4.99,'200-page notebook','Stationery'),(5,'Test',99.09,'','Test'),(6,'Test2',80.00,'','testq');
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -76,4 +76,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-04-18 10:19:03
+-- Dump completed on 2025-04-21  0:02:55
