@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+</head>
+<!-- Swiper.js JS -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    new Swiper('.product-swiper-1', {
+      loop: true,
+      pagination: {
+        el: '.product-pagination-1',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.product-button-next-1',
+        prevEl: '.product-button-prev-1',
+      },
+    });
+  });
+</script>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-left">440 Products</div>
+        <div class="nav-right">
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('cart') }}" class="cart-link">
+                🛒 Cart 
+                {% if session.cart %}
+                <span class="cart-count">
+                    {{
+                      session.cart | sum(attribute='quantity') if session.cart is iterable else 0
+                    }}
+                  </span>                  
+                {% endif %}
+            </a>
+        </div>
+    </nav>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>    
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>

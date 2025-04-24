@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1 style="text-align: center; margin-top: 2rem;">Your Shopping Cart</h1>
+
+  <div class="product-container">
+    {% if cart %}
+      {% for item in cart %}
+        <div class="product-card">
+
+          <!-- Product Image Logic -->
+          {% if item.name == 'Laptop' %}
+            <img src="https://target.scene7.com/is/image/Target/GUEST_3af92633-7515-44fb-98d2-12aaec71e83b?wid=600&hei=600" alt="{{ item.name }}" class="product-img">
+          {% elif item.name == 'Mouse' %}
+            <img src="https://target.scene7.com/is/image/Target/GUEST_b051a763-bd93-4e7f-a7c9-dbc5dc69628b?wid=600&hei=600" alt="{{ item.name }}" class="product-img">
+          {% elif item.name == 'Notebook' %}
+            <img src="https://target.scene7.com/is/image/Target/GUEST_8f8bab3d-5a25-4eeb-81c5-645e922c8ed7?wid=600&hei=600" alt="{{ item.name }}" class="product-img">
+          {% elif item.name == 'Wired EarPods' %}
+            <img src="https://target.scene7.com/is/image/Target/GUEST_b02b4c7d-da3c-4857-92f4-ed5508ed6db5?wid=1200&hei=1200" alt="{{ item.name }}" class="product-img">
+            {% elif item.name == 'Wireless Headphones' %}
+            <img src="https://target.scene7.com/is/image/Target/GUEST_7d7fb257-116b-4881-af24-fdfb9d3e715f?wid=1200&hei=1200" alt="{{ item.name }}" class="product-img">
+            {% elif item.name == '6pk #2 Mechanical Pencils' %}
+            <img src="https://target.scene7.com/is/image/Target/GUEST_dfa6c7e7-8789-41e1-a813-5cbc5ca12833?wid=1200&hei=1200" alt="{{ item.name }}" class="product-img">
+            {% elif item.name == 'Paper Mate Flair Pens' %}
+            <img src="https://target.scene7.com/is/image/Target/GUEST_47f82719-f888-443d-b8a1-a4ebf606e3e6?wid=1200&hei=1200" alt="{{ item.name }}" class="product-img">
+                   
+          {% else %}
+            <img src="{{ item.image_url or 'https://via.placeholder.com/150' }}" alt="{{ item.name }}" class="product-img">
+          {% endif %}
+
+          <!-- Product Info -->
+          <h2>{{ item.name }}</h2>
+          <p class="price">${{ item.price }}</p>
+
+          <!-- Quantity Controls -->
+          <form action="{{ url_for('update_quantity') }}" method="post" style="display: flex; justify-content: center; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+            <input type="hidden" name="product_id" value="{{ item.product_id }}">
+            <button type="submit" name="action" value="decrease" class="qty-btn">−</button>
+            <span>{{ item.quantity }}</span>
+            <button type="submit" name="action" value="increase" class="qty-btn">+</button>
+          </form>
+
+          <!-- Remove Button -->
+          <form action="{{ url_for('remove_from_cart') }}" method="post">
+            <input type="hidden" name="product_id" value="{{ item.product_id }}">
+            <button type="submit" class="remove-btn">Remove from Cart</button>
+          </form>
+
+        </div>
+      {% endfor %}
+
+      <!-- Total & Checkout -->
+      <div style="text-align: center; grid-column: 1 / -1; margin-top: 2rem;">
+        <h3>Total: ${{ total | round(2) }}</h3>
+        <button onclick="checkout()" class="checkout-btn">Checkout</button>
+      </div>
+
+      <script>
+        function checkout() {
+          const total = {{ total | round(2) }};
+          const proceed = confirm(`Your total is $${total.toFixed(2)}. Proceed?`);
+          if (!proceed) return;
+      
+          fetch('/checkout', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+          })
+          .then(res => res.json())
+          .then(data => {
+            if (data.status === 'success') {
+              alert("Thank you for your purchase!");
+              window.location.href = '/';  // redirect to homepage
+            } else {
+              alert("Checkout failed: " + data.message);
+            }
+          })
+          .catch(error => {
+            alert("An error occurred during checkout.");
+          });
+        }
+      </script>
+      
+    {% else %}
+      <p style="text-align: center; padding: 2rem;">Your cart is empty.</p>
+    {% endif %}
+  </div>
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="product-container">
+  {% for product in products %}
+    <div class="product-card">
+      {% if product.product_id in [1, 2, 3, 7, 8, 9, 10] %}
+        <div class="swiper product-swiper-{{ product.product_id }}">
+          <div class="swiper-wrapper">
+            {% if product.product_id == 1 %}
+              <div class="swiper-slide"><img src="https://target.scene7.com/is/image/Target/GUEST_3af92633-7515-44fb-98d2-12aaec71e83b?wid=600&hei=600"></div>
+              <div class="swiper-slide"><img src="https://target.scene7.com/is/image/Target/GUEST_cfc507df-d039-4755-b2dd-8794c37bc5b7?wid=600&hei=600"></div>
+              <div class="swiper-slide"><img src="https://target.scene7.com/is/image/Target/GUEST_dd44c30b-3a87-48bb-97d3-6599940c88f4?wid=600&hei=600"></div>
+              <div class="swiper-slide"><img src="https://target.scene7.com/is/image/Target/GUEST_ed062ea7-51c7-467c-92aa-32e91a589a58?wid=600&hei=600"></div>
+            {% elif product.product_id == 2 %}
+              <div class="swiper-slide"><img src="https://target.scene7.com/is/image/Target/GUEST_b051a763-bd93-4e7f-a7c9-dbc5dc69628b?wid=1200&hei=1200"></div>
+              <div class="swiper-slide"><img src="https://target.scene7.com/is/image/Target/GUEST_703597e1-628d-4d01-8a5b-a2a403a69d7a?wid=600&hei=600"></div>
+              <div class="swiper-slide"><img src="https://target.scene7.com/is/image/Target/GUEST_2d87a4d4-4c39-4bda-956c-bb6f5212c458?wid=600&hei=600"></div>
+              <div class="swiper-slide"><img src="https://target.scene7.com/is/image/Target/GUEST_2acd5e2e-c7c3-4b47-97f1-86a2b044f024?wid=600&hei=600"></div>
+            {% elif product.product_id == 3 %}
+              <div class="swiper-slide"><img src="https://target.scene7.com/is/image/Target/GUEST_8f8bab3d-5a25-4eeb-81c5-645e922c8ed7?wid=1200&hei=1200"></div>
+              <div class="swiper-slide"><img src="https://target.scene7.com/is/image/Target/GUEST_abaac8c2-9028-493b-bdb1-bf271a2e382b?wid=600&hei=600"></div>
+              <div class="swiper-slide"><img src="https://target.scene7.com/is/image/Target/GUEST_d1f17471-cde2-47ab-9596-60d4ec249a9e?wid=600&hei=600"></div>
+              <div class="swiper-slide"><img src="https://target.scene7.com/is/image/Target/GUEST_e14461e6-95dc-418d-8c71-23516ae79948?wid=600&hei=600"></div>
+            {% elif product.product_id == 7 %}
+              <div class="swiper-slide"><img src="https://target.scene7.com/is/image/Target/GUEST_b02b4c7d-da3c-4857-92f4-ed5508ed6db5?wid=1200&hei=1200&qlt=80&fmt=pjpeg"></div>
+              <div class="swiper-slide"><img src="https://target.scene7.com/is/image/Target/GUEST_4fc49d22-1374-4d7e-8309-472806a6b30a?wid=600&hei=600&qlt=80&fmt=pjpeg"></div>
+              <div class="swiper-slide"><img src="https://target.scene7.com/is/image/Target/GUEST_b8921e8a-412b-4849-a6a6-f34034445fa5?wid=600&hei=600&qlt=80&fmt=pjpeg"></div>
+              <div class="swiper-slide"><img src="https://target.scene7.com/is/image/Target/GUEST_dccaa587-0490-4244-8d19-c0533707e804?wid=600&hei=600&qlt=80&fmt=pjpeg"></div>
+            {% elif product.product_id == 8 %}
+              <div class="swiper-slide"><img src="https://target.scene7.com/is/image/Target/GUEST_7d7fb257-116b-4881-af24-fdfb9d3e715f?wid=1200&hei=1200&qlt=80&fmt=pjpeg"></div>
+              <div class="swiper-slide"><img src="https://target.scene7.com/is/image/Target/GUEST_02e4d7e6-28f3-4ded-a0aa-e3612acd4f18?wid=600&hei=600&qlt=80&fmt=pjpeg"></div>
+              <div class="swiper-slide"><img src="https://target.scene7.com/is/image/Target/GUEST_6047e79d-9f9d-4a53-b7bd-75ae2cf15787?wid=600&hei=600&qlt=80&fmt=pjpeg"></div>
+              <div class="swiper-slide"><img src="https://target.scene7.com/is/image/Target/GUEST_05dd75ab-eea1-4247-8df4-ea19a29cb8dd?wid=600&hei=600&qlt=80&fmt=pjpeg"></div>
+              {% elif product.product_id == 9 %}
+              <div class="swiper-slide"><img src="https://target.scene7.com/is/image/Target/GUEST_dfa6c7e7-8789-41e1-a813-5cbc5ca12833?wid=1200&hei=1200&qlt=80&fmt=pjpeg"></div>
+              <div class="swiper-slide"><img src="https://target.scene7.com/is/image/Target/GUEST_ae79d0b8-01cf-4fb4-b820-155e272ea2c5?wid=600&hei=600&qlt=80&fmt=pjpeg"></div>
+              <div class="swiper-slide"><img src="https://target.scene7.com/is/image/Target/GUEST_8f06420b-7731-49b2-9deb-75b60c89fa73?wid=600&hei=600&qlt=80&fmt=pjpeg"></div>
+              <div class="swiper-slide"><img src="https://target.scene7.com/is/image/Target/GUEST_197774cf-1216-45ba-be0f-9e561292dd3b?wid=600&hei=600&qlt=80&fmt=pjpeg"></div>
+              {% elif product.product_id == 10 %}
+              <div class="swiper-slide"><img src="https://target.scene7.com/is/image/Target/GUEST_47f82719-f888-443d-b8a1-a4ebf606e3e6?wid=1200&hei=1200&qlt=80&fmt=pjpeg"></div>
+              <div class="swiper-slide"><img src="https://target.scene7.com/is/image/Target/GUEST_3c4af39c-710d-4c94-af10-30005a06f487?wid=600&hei=600&qlt=80&fmt=pjpeg"></div>
+              <div class="swiper-slide"><img src="https://target.scene7.com/is/image/Target/GUEST_140173a3-a06b-4e85-90ef-121fc37f01ff?wid=600&hei=600&qlt=80&fmt=pjpeg"></div>
+              <div class="swiper-slide"><img src="https://target.scene7.com/is/image/Target/GUEST_2f2f4d04-b8cc-49cd-a98e-29871175ad0d?wid=600&hei=600&qlt=80&fmt=pjpeg"></div>
+        
+              {% endif %}
+          </div>
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+      {% else %}
+        <img src="{{ product.image_url }}" alt="{{ product.name }}" class="product-img">
+      {% endif %}
+      <h2>{{ product.name }}</h2>
+      <p class="price">${{ product.price }}</p>
+      <p>{{ product.description }}</p>
+      <form action="{{ url_for('add_to_cart', product_id=product.product_id) }}" method="post">
+        <button type="submit">Add to Cart</button>
+      </form>
+    </div>
+  {% endfor %}
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+      document.querySelectorAll(".swiper").forEach((swiperEl) => {
+        new Swiper(swiperEl, {
+          loop: true,
+          pagination: {
+            el: swiperEl.querySelector(".swiper-pagination"),
+            clickable: true
+          },
+          navigation: {
+            nextEl: swiperEl.querySelector(".swiper-button-next"),
+            prevEl: swiperEl.querySelector(".swiper-button-prev")
+          }
+        });
+      });
+    });
+  </script>
+  
+{% endblock %}
