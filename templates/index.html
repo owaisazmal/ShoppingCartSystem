@@ -1,5 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
+<form method="GET" action="{{ url_for('index') }}">
+    <label for="sort_order">Price:</label>
+    <select id="sort_order" name="sort_order">
+        <option value="asc" {% if sort_order == 'asc' %}selected{% endif %}>Low to High</option>
+        <option value="desc" {% if sort_order == 'desc' %}selected{% endif %}>High to Low</option>
+    </select>
+    <button type="submit">Sort</button>
+</form>
+
 <div class="product-container">
   {% for product in products %}
     <div class="product-card">

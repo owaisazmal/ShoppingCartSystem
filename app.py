@@ -13,18 +13,23 @@ def get_db_connection():
         database='shopping_cart_system'
     )
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
     db = get_db_connection()
     cursor = db.cursor(dictionary=True)
 
-    cursor.execute("SELECT * FROM products")
+    sort_order = request.args.get('sort_order', 'asc')  # Default to asc order
+
+    if sort_order == 'asc':
+        cursor.execute("SELECT * FROM products ORDER BY price ASC")
+    elif sort_order == 'desc':
+        cursor.execute("SELECT * FROM products ORDER BY price DESC")
+    else:
+        cursor.execute("SELECT * FROM products")
+
     products = cursor.fetchall()
-
     db.close()
-    return render_template('index.html', products=products)
-
-
+    return render_template('index.html', products=products, sort_order=sort_order)
 
 @app.route('/add_to_cart/<int:product_id>', methods=['POST'])
 def add_to_cart(product_id):
