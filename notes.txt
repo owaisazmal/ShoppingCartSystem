@@ -1,5 +1,10 @@
 *Ignore: Self Notes to Work with SQL
 
+mysql -u root -p
+USE shopping_cart_system;
+SHOW TABLES;
+SELECT * FROM products;
+
 {to export the DATABASE}
 sudo mysqldump -u root shopping_cart_system > shopping_cart_db.sql
 
